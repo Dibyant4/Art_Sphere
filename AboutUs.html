@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art Sphere</title>
+<style>
+
+/* Navbar */
+nav {
+  width: 100%;
+  height: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0b1c17;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: rgb(255, 255, 255);
+  padding: 15px 35px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+.nav-logo img {
+  height: 55px;
+  transition: transform 0.3s ease;
+}
+.nav-logo:hover img {
+  transform: scale(1.1) rotate(3deg);
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 20px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffcc00;
+  transform: scale(1.1);
+}
+
+/* Hero/Header Section */
+header{
+  height: 700px;
+  background-size: cover;
+  background-position: center;
+}
+
+ul {
+  list-style: none;
+}
+li {
+  display: inline-block;
+}
+li a {
+  margin-left: 50px;
+}
+
+/* Body */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* Company Section */
+.company-section {
+  text-align: center;
+  padding: 100px 20px 60px;
+  background: url(images/bg1.webp) no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  position: relative;
+}
+
+.company-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.company-section img,
+.company-section h1,
+.company-section p {
+  position: relative;
+  z-index: 1;
+}
+
+.company-section img {
+  width: 150px; 
+  margin-bottom: 15px; 
+}
+
+.company-section h1 {
+  font-size: 2.5em;
+  margin-bottom: 8px; 
+}
+
+.company-section p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1em;
+  line-height: 1.6em;
+  color: #fff;
+}
+
+/* Featured Works Section */
+.works-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f0f0f0;
+}
+.works-section h2 {
+  font-size: 2em;
+  margin-bottom: 40px;
+}
+.works-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.work-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  overflow: hidden;
+  width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.work-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+.work-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.work-card h3 {
+  margin: 0;
+  font-size: 1.2em;
+  padding: 15px;
+  color: #222;
+}
+
+/* Button */
+.view-more-btn {
+  margin-top: 30px;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  font-weight: bold;
+  background: #ff6b6b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.view-more-btn:hover {
+  transform: scale(1.1);
+  background: #ff4b4b;
+}
+
+/* Carousel Wrapper */
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  max-width: 1400px;
+  margin: 40px auto;
+}
+
+/* Buttons */
+.carousel-button {
+  background: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  margin: 0 15px;
+  transition: background 0.3s;
+}
+.carousel-button:hover {
+  background: rgba(255,255,255,1);
+}
+
+/* Carousel Container */
+.carousel-container {
+  overflow: hidden;
+  flex: 1;
+}
+
+/* Track */
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Employee Card */
+.employee-card {
+  flex: 0 0 calc((100% - 40px) / 3); 
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 288px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.employee-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.employee-card img {
+  width: 100%;
+  height: 66.66%;
+  object-fit: cover;
+}
+
+.employee-card h3 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #222;
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 40px 10%;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.footer-logo span {
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.footer-text {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <div class="nav-logo">
+    <img src="images/logoo.png" alt="ArtSphere Logo">
+  </div>
+  <ul>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#artists">Artists</a></li>
+    <li><a href="#tutorials">Tutorials</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="btn">Submit Art</a></li>
+  </ul>
+</nav>
+
+<!-- Company Section -->
+<section class="company-section">
+  <img src="images/logoo.png" alt="Gallery Logo">
+  <h1>What is ArtSphere?</h1>
+  <p>
+    ArtSphere is a creative space celebrating modern and classical art. We connect artists, curators, and visitors in a vibrant community that inspires creativity and showcases diverse talent. Our gallery hosts exhibitions, workshops, and interactive events designed to spark imagination and encourage artistic exploration. By fostering collaboration and dialogue, we aim to highlight emerging artists, honor established masters, and provide a platform where all forms of creative expression can flourish. At ArtSphere, every visitor is invited to experience the beauty, innovation, and transformative power of art.
+  </p>
+</section>
+
+<!-- Featured Works Section -->
+<section class="works-section">
+  <h2>Featured Artists</h2>
+  <div class="works-container">
+    <div class="work-card">
+      <img src="images/bobross.jpeg" alt="Art 1">
+      <h3>Bob Rush</h3>
+    </div>
+    <div class="work-card">
+      <img src="images/Rembrandt.jpg" alt="Art 2">
+      <h3>Rembrandt</h3>
+    </div>
+    <div class="work-card">
+      <img src="images/chiho.jpg" alt="Art 3">
+      <h3>Chino Aoshima</h3>
+    </div>
+  </div>
+  <a href=""><button class="view-more-btn">View More Artists</button></a>
+</section>
+
+<!-- Carousel Section -->
+<section class="carousel-section">
+  <h2 style="text-align: center; margin-bottom: 40px; font-size: 2em;">Meet Our Team</h2>
+  <div class="carousel-wrapper">
+    <button class="carousel-button prev-button">&#10094;</button>
+    <div class="carousel-container">
+      <div class="carousel-track" id="carousel-track">
+        <a href="dibyant.html" class="employee-card">
+          <img src="images/dibyant.jpg" alt="Employee 1">
+          <h3>Dibyant Bhatta</h3>
+        </a>
+        <a href="kritika.html" class="employee-card">
+          <img src="images/KRITIKAB.jpg" alt="Employee 2">
+          <h3>Kritika Basel</h3>
+        </a>
+        <a href="sabin.html" class="employee-card">
+          <img src="images/sabin.jpg" alt="Employee 3">
+          <h3>Sabin Paudel</h3>
+        </a>
+        <a href="stuti.html" class="employee-card">
+          <img src="images/stutii.png" alt="Employee 4">
+          <h3>Stuti Adhiari</h3>
+        </a>
+        <a href="employee5.html" class="employee-card">
+          <img src="employee5.jpg" alt="Employee 5">
+          <h3>Lahana Lwaaju</h3>
+        </a>
+        <a href="nischal.html" class="employee-card">
+          <img src="images/hischal.jpg" alt="Employee 6">
+          <h3>Nischal Raj Joshi</h3>
+        </a>
+      </div>
+    </div>
+    <button class="carousel-button next-button">&#10095;</button>
+  </div>
+</section>
+
+<script>
+const track = document.getElementById("carousel-track");
+let cards = Array.from(track.children);
+const gap = 20;
+let cardWidth = cards[0].offsetWidth + gap;
+let index = 0;
+
+// Slide one card to left visually
+function moveNext() {
+  index++;
+  track.style.transition = 'transform 0.6s ease-in-out';
+  track.style.transform = `translateX(-${index * cardWidth}px)`;
+
+  track.addEventListener('transitionend', () => {
+    if (index >= cards.length - 3) {
+      track.style.transition = 'none';
+      let firstCard = track.firstElementChild;
+      track.appendChild(firstCard);
+      index--;
+      track.style.transform = `translateX(-${index * cardWidth}px)`;
+      cards = Array.from(track.children);
+    }
+  }, {once: true});
+}
+
+// Auto-slide every 3 seconds
+let autoSlide = setInterval(moveNext, 3000);
+
+// Buttons
+document.querySelector('.next-button').addEventListener('click', () => {
+  moveNext();
+  resetAutoSlide();
+});
+document.querySelector('.prev-button').addEventListener('click', () => {
+  track.style.transition = 'none';
+  let lastCard = track.lastElementChild;
+  track.insertBefore(lastCard, track.firstElementChild);
+  track.style.transform = `translateX(-${index * cardWidth}px)`;
+  setTimeout(() => {
+    track.style.transition = 'transform 0.6s ease-in-out';
+    index--;
+    track.style.transform = `translateX(-${index * cardWidth}px)`;
+  }, 50);
+  resetAutoSlide();
+});
+
+function resetAutoSlide() {
+  clearInterval(autoSlide);
+  autoSlide = setInterval(moveNext, 3000);
+}
+</script>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+      <img src="images/logoo.png" alt="ArtSphere Logo">
+      <span>ArtSphere</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="artists.html">Artists</a></li>
+      <li><a href="tutorial.html">Tutorial</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </div>
+  <p class="footer-text">© 2025 ArtSphere. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
