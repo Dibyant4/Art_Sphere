@@ -1,0 +1,288 @@
+<!-- about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Your Name</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: #f1f5f9;
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e40af;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1e40af;
+            transform: translateY(-2px);
+        }
+
+        .hire-btn {
+            background-color: #1e40af;
+            color: #ffffff;
+            padding: 0.6rem 1.8rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .hire-btn:hover {
+            background-color: #1e3a8a;
+            transform: scale(1.05);
+        }
+
+        .about-hero {
+            background: linear-gradient(135deg, #1e40af 0%, #60a5fa 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 6rem 2rem;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .about-hero img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            border: 5px solid #ffffff;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .about-hero img:hover {
+            transform: scale(1.05);
+        }
+
+        .about-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            z-index: 1;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+            animation: slideInUp 1.2s ease-out;
+        }
+
+        .about-content h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #475569;
+        }
+
+        footer {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            font-size: 1.6rem;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: #60a5fa;
+            transform: scale(1.2);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links li {
+                margin: 0.7rem 0;
+            }
+
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-hero img {
+                width: 160px;
+                height: 160px;
+            }
+
+            .about-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-content p {
+                font-size: 1rem;
+            }
+
+            .social-links a {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="projects.html">My Works</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+                <li><a href="contact.html" class="hire-btn">Hire Me</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="about-hero">
+        <img src="me.png" alt="Your Name">
+        <h1>About me</h1>
+    </section>
+
+    <section class="about-content">
+        <h2>My Journey</h2>
+        <p>
+            I am a dedicated UI/UX designer with a passion for creating user-centered designs. With a background in Computing, I specialize in wireframing, prototyping, and user testing to deliver seamless digital experiences. My goal is to blend aesthetics with functionality, ensuring every project is both visually appealing and intuitive. Over 2 years, I've worked on diverse projects, from mobile apps to enterprise web platforms, always prioritizing user satisfaction.
+        </p>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/lahana-lawaju-858383361/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+            <a href="https://x.com/yourprofile" target="_blank" aria-label="Twitter/X">Twitter/X</a>
+            <a href="https://www.behance.net/wangjia9" target="_blank" aria-label="Behance">Behance</a>
+            <a href="https://dribbble.com/wang-jia" target="_blank" aria-label="Dribbble">Dribbble</a>
+        </div>
+        <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const navbar = document.querySelector('.navbar');
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            navbar.classList.toggle('scrolled', currentScroll > 50);
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
