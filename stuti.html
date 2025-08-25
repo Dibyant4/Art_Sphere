@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stuti's Portfolio</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        section {
+            padding: 40px 20px;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #3498db;
+            margin: 10px auto;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #f1f1f1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin: 20px 0 10px;
+            color: #2c3e50;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 10px;
+        }
+        
+        /* Personal Details Section */
+        .details-container {
+            padding: 20px;
+        }
+        
+        .detail-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .detail-item strong {
+            display: inline-block;
+            width: 150px;
+            color: #2c3e50;
+        }
+        
+        /* Education Section */
+        .education-item {
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background: #f8f9fa;
+        }
+        
+        .education-item h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .education-item .date {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        /* Interests Section */
+        .interests-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .interest-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .skill-item {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background: #ecf0f1;
+            border-radius: 5px;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background: #3498db;
+            border-radius: 5px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            section {
+                padding: 30px 15px;
+            }
+            
+            .detail-item strong {
+                width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section with Photo -->
+    <section class="hero">
+        <div class="profile-container">
+            <img src="images/stutii.png" alt="Profile Photo" class="profile-img">
+            <h1>Stuti Adhikari</h1>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                I am a dedicated computing student with a passion for technology, problem-solving, and effective communication. 
+                <br>I am always eager to expand my skill set, take on new challenges, and contribute positively to any team or project I am part of.
+
+        </div>
+    </section>
+
+    <!-- Personal Details Section -->
+    <section id="details">
+        <h2>Personal Details</h2>
+        <div class="details-container">
+            <div class="detail-item"><strong>Name:</strong> Stuti Adhikari</div>
+            <div class="detail-item"><strong>Email:</strong> stutiadhikari3@gmail.com</div>
+            <div class="detail-item"><strong>Address:</strong> Kathmandu, Nepal</div>
+            <div class="detail-item"><strong>Date of Birth:</strong> September 18, 2005</div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2>Education</h2>
+        <div class="education-item">
+            <h3>Computing</h3>
+            <div class="date">09/2024-present</div>
+            <p>Islington College</p>
+        </div>
+        <div class="education-item">
+            <h3>CIE A-level</h3>
+            <div class="date">06/2022-03/2024</div>
+            <p>Global College International</p>
+        </div>
+        <div class="education-item">
+            <h3>SEE</h3>
+            <div class="date">Aksharaa School</div>
+            <p>05/2022</p>
+            
+        </div>
+    </section>
+
+    <!-- Interests Section -->
+    <section id="interests">
+        <h2>Interests</h2>
+        <div class="interests-container">
+            <div class="interest-item">
+                <h3>Photography</h3>
+                <p>Capturing moments and telling stories through images</p>
+            </div>
+            <div class="interest-item">
+                <h3>Travel</h3>
+                <p>Exploring new cultures and destinations around the world</p>
+            </div>
+            <div class="interest-item">
+                <h3>Reading</h3>
+                <p>Fiction, non-fiction, and professional development books</p>
+            </div>
+            <div class="interest-item">
+                <h3>Music</h3>
+                <p>Exploring new music genres </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Web Design</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Graphic Design</span>
+                    <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 85%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>HTML/CSS</span>
+                    <span>95%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 95%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>JavaScript</span>
+                    <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>UI/UX Design</span>
+                    <span>75%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 75%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

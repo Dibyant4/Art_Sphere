@@ -1,0 +1,513 @@
+<!-- index.html (Home Page with Hero, Intro, Projects, and Contact) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - UI/UX Designer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: #f1f5f9;
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e40af;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1e40af;
+            transform: translateY(-2px);
+        }
+
+        .hire-btn {
+            background-color: #f5f5f5;
+            color: #ffffff;
+            text-decoration-color: #ffffff;
+            padding: 0.6rem 1.8rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .hire-btn:hover {
+            background-color: #1e3a8a;
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1e40af 0%, #4677b4 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: slideInUp 1.2s ease-out;
+        }
+
+        /* Intro Section */
+        .intro-section {
+            padding: 6rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            animation: slideInUp 1.2s ease-out;
+        }
+
+        .intro-section h2 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            color: #475569;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 6rem 2rem;
+            background-color: #ffffff;
+            animation: slideInUp 1.2s ease-out;
+        }
+
+        .projects-section h2 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background-color: #f8fafc;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-card-content {
+            padding: 1.8rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-card p {
+            color: #475569;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-card a {
+            color: #1e40af;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-card a:hover {
+            color: #1e3a8a;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 6rem 2rem;
+            animation: slideInUp 1.2s ease-out;
+        }
+
+        .contact-section h2 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: left;
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-container input,
+        .contact-container textarea {
+            width: 100%;
+            padding: 0.9rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-container input:focus,
+        .contact-container textarea:focus {
+            border-color: #1e40af;
+            outline: none;
+        }
+
+        .contact-container textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background-color: #1e40af;
+            color: #ffffff;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #1e3a8a;
+            transform: scale(1.05);
+        }
+
+        .cv-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background-color: #15803d;
+            color: #ffffff;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .cv-btn:hover {
+            background-color: #166534;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            font-size: 1.6rem;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: #60a5fa;
+            transform: scale(1.2);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links li {
+                margin: 0.7rem 0;
+            }
+
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-section p {
+                font-size: 1rem;
+            }
+
+            .intro-section h2,
+            .projects-section h2,
+            .contact-section h2 {
+                font-size: 2rem;
+            }
+
+            .project-card img {
+                height: 180px;
+            }
+
+            .contact-container {
+                padding: 1.5rem;
+            }
+
+            .social-links a {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="lahana.html">Home</a></li>
+                <li><a href="lahanaabout.html">About Me</a></li>
+                <li><a href="projects.html">My Works</a></li>
+                <li><a href="lahanacontact.html">Contact Me</a></li>
+                <li><a href="#contact" class="hire-btn">Hire Me</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Hi, I'm Lahana</h1>
+            <p>A passionate UI/UX Designer crafting intuitive and visually stunning experiences with 2 years of expertise.</p>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro-section">
+        <h2>About Me</h2>
+        <p>
+            I'm lahana, a UI/UX designer dedicated to creating user-friendly and aesthetically pleasing digital experiences. With 2 years in the field, I specialize in wireframing, prototyping, and user testing, turning ideas into seamless interfaces.
+        </p>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <h2>My Works</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="images/project1.jpg" alt="Project 1">
+                <div class="project-card-content">
+                    <h3>Project 1</h3>
+                    <p>A mobile app redesign focused on improving user navigation and engagement.</p>
+                    <a href="project1.html">View Details</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="images/pro2.jpg" alt="Project 2">
+                <div class="project-card-content">
+                    <h3>Project 2</h3>
+                    <p>A web application with a focus on accessibility and responsive design.</p>
+                    <a href="project2.html">View Details</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="images/pro3.jpg" alt="Project 3">
+                <div class="project-card-content">
+                    <h3>Project 3</h3>
+                    <p>An e-commerce platform with intuitive UI and seamless checkout flow.</p>
+                    <a href="project3.html">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-container">
+            <form id="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            <a href="/path/to/your-cv.pdf" class="cv-btn" download>Download My CV</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/lahana-lawaju-858383361/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+            <a href="https://x.com/yourprofile" target="_blank" aria-label="Twitter/X">Twitter/X</a>
+            <a href="https://www.behance.net/wangjia9" target="_blank" aria-label="Behance">Behance</a>
+            <a href="https://dribbble.com/wang-jia" target="_blank" aria-label="Dribbble">Dribbble</a>
+        </div>
+        <p>&copy; 2025 Lahana. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Navbar hide on scroll down, show on scroll up
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const navbar = document.querySelector('.navbar');
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            navbar.classList.toggle('scrolled', currentScroll > 50);
+            lastScroll = currentScroll;
+        });
+
+        // Contact form demo submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! (This is a demo response)');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
