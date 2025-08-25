@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArtSphere - Learn Art Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --bg: #cfc8a8;
+      --text: #ffffd1;
+      --accent: #ffffd1;
+      --accent-2: #4d2d18;
+      --muted: #ffffd1;
+      --primary: #ff6b6b;
+    }
+
+    /* Reset */
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background: var(--bg);
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .container { 
+      max-width: 1200px; 
+      margin: auto; 
+      padding: 0 20px; 
+    }
+    
+    /* Navbar */
+    nav {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #0b1c17;
+      position: fixed;
+      top: 0;
+      color: rgb(255, 255, 255);
+      padding: 15px 35px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: x-large;
+      font-weight: 600;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+    
+    .nav-logo img {
+      height: 55px;
+      transition: transform 0.3s ease;
+    }
+    
+    .nav-logo:hover img {
+      transform: scale(1.1) rotate(3deg);
+    }
+    
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+    
+    nav ul li {
+      margin-right: 20px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 18px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    
+    nav a:hover {
+      color: #ffcc00;
+      transform: scale(1.1);
+    }
+    
+    nav .btn {
+      padding: 10px 20px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50px;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    }
+    
+    nav .btn:hover {
+      background: #ff5252;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)),
+        url('https://images.unsplash.com/photo-1557243962-0a093922933f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') 
+        no-repeat center/cover;
+      height: 100vh; 
+      min-height: 600px;
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      text-align: center; 
+      color: #fff;
+      position: relative;
+      margin-top: 80px;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      padding: 20px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    
+    .hero h1 { 
+      font-size: 3.5rem; 
+      margin-bottom: 20px; 
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .hero p { 
+      font-size: 1.5rem; 
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    }
+    
+    .btn:hover {
+      background: #ff5252;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+    }
+    
+    .btn i {
+      margin-left: 8px;
+    }
+    
+    /* Section Titles */
+    .section-title { 
+      text-align: center; 
+      margin: 80px 0 40px; 
+    }
+    
+    .section-title h2 { 
+      font-size: 2.5rem; 
+      margin-bottom: 15px; 
+      color: #333;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .section-title p { 
+      font-size: 1.2rem;
+      color: #777;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Category Headings */
+    .tutorials h3 {
+      font-size: 1.8rem;
+      margin: 50px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #eee;
+      color: #444;
+    }
+    
+    /* Video Grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    
+    .video-card {
+      background: #fff; 
+      border-radius: 12px; 
+      box-shadow: 0 5px 15px rgba(0,0,0,.08);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .video-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,.15);
+    }
+    
+    .video-container { 
+      position: relative; 
+      padding-bottom: 56.25%; 
+      height: 0; 
+    }
+    
+    .video-container iframe {
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
+      border: none;
+    }
+    
+    .video-content { 
+      padding: 20px; 
+    }
+    
+    .video-content h4 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+    
+    .gallery-grid img {
+      width: 100%; 
+      height: 200px; 
+      object-fit: cover;
+      border-radius: 10px; 
+      box-shadow: 0 5px 15px rgba(0,0,0,.1);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+    
+    .gallery-grid img:hover { 
+      transform: scale(1.05); 
+      box-shadow: 0 8px 25px rgba(0,0,0,.2);
+    }
+    
+    /* Footer Section */
+    .footer {
+      background: #111;
+      color: #fff;
+      padding: 40px 10%;
+      text-align: center;
+      margin-top: 80px;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    /* Logo */
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .footer-logo img {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .footer-logo span {
+      font-size: 1.3rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    
+    /* Links */
+    .footer-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .footer-links li a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    
+    .footer-links li a:hover {
+      color: #fff;
+      transform: translateY(-3px);
+    }
+    
+    /* Footer Bottom Text */
+    .footer-text {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero p { font-size: 1.2rem; }
+      .section-title h2 { font-size: 2rem; }
+      .video-grid { gap: 20px; }
+      
+      nav {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+      }
+      
+      nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      nav ul li {
+        margin: 5px 10px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+      .btn { padding: 12px 25px; }
+      .section-title h2 { font-size: 1.8rem; }
+      .section-title p { font-size: 1rem; }
+      .tutorials h3 { font-size: 1.5rem; }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-logo">
+      <img src= "photos/logoo.png" alt="ArtSphere Logo">
+    </div>
+    <ul>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#artists">Artists</a></li>
+      <li><a href="#tutorials">Tutorials</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="btn">Submit Art</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>From Studies to Masterpieces</h1>
+      <p>Unlock your artistic potential with our tutorials</p>
+      <a href="#tutorials" class="btn">Get Started <i class="fas fa-arrow-down"></i></a>
+    </div>
+  </section>
+
+  <!-- Tutorials -->
+  <section class="tutorials" id="tutorials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Art Tutorials</h2>
+        <p>Watch and learn directly from the best video lessons</p>
+      </div>
+
+      <h3>Drawing</h3>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/1jjmOF1hQqI?si=IPR7V9kwrcFYkKU_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="video-content">
+            <h4>Guide for Beginners</h4>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ewMksAbgdBI?si=0hsrI9znWeBdSkGF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="video-content">
+            <h4>Sketching Basics </h4>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/PqysfuKMQbM?si=pxleAZmJQe9Nq41j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="video-content">
+            <h4>Learn Anatomy</h4>
+          </div>
+        </div>
+      </div>
+
+      <h3>Painting</h3>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-container">
+           <iframe width="560" height="315" src="https://www.youtube.com/embed/lLWEXRAnQd0?si=xA1-ylKOys5yXDNz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="video-content">
+            <h4>The Joy of Painting</h4>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/akTKvXnrsQ4?si=XjmYJWM6vxhGSxjK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="video-content">
+            <h4>Acrylic Painting</h4>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/fgWdMsAXSXg?si=DA34UCUVvpID-gD4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="video-content">
+            <h4>Oil Painting</h4>
+          </div>
+        </div>
+      </div>
+
+      <h3>Digital Art</h3>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/bsmgbh58nNw?si=B8gkXzOiqjLZLmpc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="video-content">
+            <h4>Getting Started</h4>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-container">
+           <iframe width="560" height="315" src="https://www.youtube.com/embed/QwtFYWczrXY?si=Pdk6brCg0xJqfWqX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="video-content">
+            <h4>Learn Procreate</h4>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/43dJsnIIrY0?si=6Ucl1knFBIQCiXxU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="video-content">
+            <h4>Photoshop Guide</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-title">
+        <h2>The Beauty of Learning</h2>
+        <p>Explore beautiful artworks using the principles from our tutorials</p>
+      </div>
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1045&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Art 1">
+        <img src="https://images.unsplash.com/photo-1582201943021-e8e5cb6dedc2?q=80&w=1668&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Art 2">
+        <img src="https://images.unsplash.com/photo-1579009420909-b837eefa4274?q=80&w=2027&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Art 3">
+        <img src="https://images.unsplash.com/photo-1731273346069-b7a14b0fcfd6?q=80&w=1050&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Art 4">
+        <img src="https://images.unsplash.com/photo-1625212895824-ff2232e9f304?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Art 5">
+        <img src="https://images.unsplash.com/photo-1603319655836-517361dec472?q=80&w=1014&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Art 6">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <!-- Logo -->
+      <div class="footer-logo">
+        <img src="photos/logoo.png" alt="ArtSphere Logo">
+        <span>ArtSphere</span>
+      </div>
+
+      <!-- Navigation Links -->
+      <ul class="footer-links">
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#artists">Artists</a></li>
+        <li><a href="#tutorials">Tutorials</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+
+    <p class="footer-text">© 2025 ArtSphere. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Smooth scrolling for the Get Started button
+    document.querySelector('.btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+    
+    // Add subtle animation to video cards when they come into view
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Apply animation to video cards
+    document.querySelectorAll('.video-card').forEach(card => {
+      card.style.opacity = 0;
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>
