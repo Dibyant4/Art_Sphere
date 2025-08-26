@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+ <link rel="stylesheet" href="style.css">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Artsphere Contact & Submission</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
-    @ import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display-swap');
+   
 *
 {
     margin: 0;
@@ -445,10 +448,70 @@
 
 
 
+/* Navbar Styling */
+nav {
+  position: fixed;       /* stay on top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7); /* semi-transparent dark background */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  z-index: 1000;         /* keep above other sections */
+}
+
+nav .nav-logo img {
+  height: 50px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.btn {
+  color: #00bcd4;
+}
+
+/* Push content down to avoid being hidden behind fixed navbar */
+.contact {
+  padding-top: 120px; 
+}
+
+
 
   </style>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 <body>
+
+<!-- Navbar -->
+      <nav>
+         <div class="nav-logo">
+    <img src="photos/logo 1.png" alt="ArtSphere Logo" >
+  </div>
+       <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="front.html">Artists</a></li>
+        <li><a href="tutorial.html">Tutorials</a></li>
+        <li><a href="AboutUs.html">About</a></li>
+        <li><a href="contact.html" class="btn">Submit Art</a></li>
+      </ul>
+    </nav>
 
 <!-- CONTACT SECTION -->
 <section class="contact">
@@ -539,6 +602,30 @@
       </div>
     </form>
   </div>
+</section>
+
+<!-- Footer Section -->
+<section>
+ <footer class="footer">
+  <div class="footer-content">
+    <!-- Logo -->
+    <div class="footer-logo">
+      <img src="photos/logoo.png" alt="ArtSphere Logo">
+      <span>ArtSphere</span>
+    </div>
+
+    <!-- Navigation Links -->
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="front.html">Artists</a></li>
+      <li><a href="tutorial.html">Tutorial</a></li>
+      <li><a href="AboutUs.html">About</a></li>
+    </ul>
+  </div>
+
+  <p class="footer-text">© 2025 ArtSphere. All rights reserved.</p>
+ </footer>
 </section>
 
 <!-- POPUP SCRIPT -->
